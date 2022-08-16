@@ -1,16 +1,28 @@
 import React, { Component } from 'react'
 import css from "./css/Content.module.css"
 import { savedPosts } from "../posts.json";
+import Loader from './Loader';
 
 export class Content extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            isLoaded: false
+          }
+    }
+    getData(){
+        setTimeout(() => {
+            
+        },3000)
     }
 
     render() {
         return (
+            
             <div className={css.Content}>
+                <Loader/>
+                {this.getData}
                 <div className={css.TitleBar}>
                     <h1> My Photos </h1>
 

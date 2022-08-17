@@ -8,7 +8,9 @@ export class Content extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoaded: false
+            isLoaded: false,
+            posts:[],
+            
         }
     }
     // after 2 seconds run this code
@@ -16,8 +18,22 @@ export class Content extends Component {
         setTimeout(()=>{
             this.setState({
                 isLoaded: true,
+                posts:savedPosts
             })
         }, 2000)
+    }
+
+    handleChange =(e) =>{
+        const name=e.target.value.toLowerCase();
+        console.log(name)
+        const filteredPosts = savedPosts.filter((post)=>{
+            return post.name.toLowerCase().includes(name);
+        })
+        
+        this.setState({
+            posts: filteredPosts
+        })
+
     }
 
     render() {
@@ -28,6 +44,15 @@ export class Content extends Component {
                 {this.getData}
                 <div className={css.TitleBar}>
                     <h1> My Photos </h1>
+                    <form>
+            <label htmlFor='searchInput'> Search</label>
+            <input 
+            id = 'searchInput'
+            placeholder='By author...'
+            onChange={event => this.handleChange(event)}
+            />
+            <h4> Post found {this.state.posts.length}</h4>
+                    </form>
 
                 </div>
 
@@ -35,7 +60,7 @@ export class Content extends Component {
                     {
                         // when state is false true run post item else run loader
                         this.state.isLoaded ?
-                    <PostItem savedPosts={savedPosts} />
+                    <PostItem savedPosts={this.state.posts} />
                    :<Loader/>
                     }
                 </div>

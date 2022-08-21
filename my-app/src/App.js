@@ -3,8 +3,8 @@ import SideBar from './components/Sidebar';
 // import NavBarSimple from './components/navBarSimple';
 // {<NavBarSimple/>}
 import NavBarForm from './components/NavBarForm';
-import Content from './components/Content';
-import ContentHooks from './components/ContentHooks';
+// import Content from './components/Content';
+// import ContentHooks from './components/ContentHooks';
 import ContentApiHooks from './components/ContetApiHook';
 
 
